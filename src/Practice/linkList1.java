@@ -31,24 +31,20 @@ class LinkList{
         newNode.next = head;
         head = newNode;
     }
-    public void display(){
-        if(head == null){
+    public void display() {
+        if (head == null) {
             System.out.println("List is Empty!");
             return;
         }
-        else{
-            Node current = head;
-            while (current != null){
-                System.out.print(current.Data);
-                if(current.next != null){
-                    System.out.print(" -> ");
-                }else{
-                    System.out.print(" -> null");
-                }
-                current = current.next;
-            }
+
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.Data + " -> ");
+            current = current.next;
         }
+        System.out.println("null");
     }
+
 }
 
 public class linkList1 {
