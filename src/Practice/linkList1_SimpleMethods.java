@@ -3,8 +3,13 @@ package Practice;
 class Node{
      Message Data;
      Node next;
+     int data;
      Node(Message Data){
          this.Data = Data;
+         this.next = null;
+     }
+     Node(int Data){
+         this.data  = Data;
          this.next = null;
      }
  }
@@ -24,6 +29,15 @@ class Node{
 class LinkList{
     Node head;
     public void addToFront(Message Data){
+        Node newNode = new Node(Data);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        newNode.next = head;
+        head = newNode;
+    }
+    public void addToFront(int Data){
         Node newNode = new Node(Data);
         if(head == null){
             head = newNode;
@@ -127,6 +141,33 @@ class LinkList{
         }
     }
 
+    private boolean messgeEqual(Message a , Message b){
+        if(a == null || b == null) {
+            return false;
+        }
+        boolean sameName = (a.Name == null && b.Name == null)
+                || (a.Name != null && a.Name.equals(b.Name));
+        return sameName && a.Age == b.Age;
+    }
+
+    public void addKeyBeforeNode(Message Key, Message target){
+        if(head == null){
+            System.out.println("List is empty!");
+            return;
+        }
+        if(messgeEqual(head.Data, target)){
+            Node newNode = new Node(Key);
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+        Node current = head;
+        while(current.next != null && !(messgeEqual(current.next.Data, target))){
+            current = current.next;
+        }
+        if(current.next == null)
+    }
+
     public void isListEmpty(){
         if(head == null){
             System.out.println("List is Empty! ");
@@ -161,11 +202,10 @@ public class linkList1_SimpleMethods {
         list.addToFront(new Message("Aisha ", 15));
         list.addToBack(new Message("Eshal ", 4));
         list.addToBack(new Message("Urooj" , 13));
-
         list.display();
 
-
-
+        list.addKeyBeforeNode(obj1,new Message("Aisha ", 15));
+        list.display();
 //        list.remove(new Message("Eshal ", 4));
 //        list.display();
 //        list.isListEmpty();
