@@ -1,31 +1,31 @@
-package Practice;
+package Lab3;
 
 class Node{
-     contacts Data;
-     Node next;
-     int data;
-     Node(contacts Data){
-         this.Data = Data;
-         this.next = null;
-     }
-     Node(int Data){
-         this.data  = Data;
-         this.next = null;
-     }
- }
+    contacts Data;
+    Node next;
+    int data;
+    Node(contacts Data){
+        this.Data = Data;
+        this.next = null;
+    }
+    Node(int Data){
+        this.data  = Data;
+        this.next = null;
+    }
+}
 
- class contacts {
-     String Name;
-     int Age;
-     contacts(String Name , int Age){
-         this.Name = Name;
-         this.Age = Age;
-     }
-     @Override
-     public String toString(){
-         return Name + "  Age: (" + Age + ")";
-     }
- }
+class contacts {
+    String Name;
+    int Age;
+    contacts(String Name , int Age){
+        this.Name = Name;
+        this.Age = Age;
+    }
+    @Override
+    public String toString(){
+        return Name + "  Age: (" + Age + ")";
+    }
+}
 class LinkList{
     Node head;
     public void addToFront(contacts Data){
@@ -100,27 +100,27 @@ class LinkList{
         }
     }
     public void find(contacts Data){
-            if (head == null){
-                return;
-            }
-            else{
-                int count = 0;
-                boolean check = false;
-                Node current = head;
-                while(current != null){
-                    if(current.Data.Age == Data.Age){
-                        check = true;
-                        break;
-                    }
-                    count++;
-                    current = current.next;
+        if (head == null){
+            return;
+        }
+        else{
+            int count = 0;
+            boolean check = false;
+            Node current = head;
+            while(current != null){
+                if(current.Data.Age == Data.Age){
+                    check = true;
+                    break;
                 }
-                if(check){
-                    System.out.println(Data.Name +", " + Data.Age+  " is Found after " + count +  " occurences!");
-                }else{
-                    System.out.println(Data.Name +", " + Data.Age +  " is NOT Found after " + count +  " occurences!");
-                }
+                count++;
+                current = current.next;
             }
+            if(check){
+                System.out.println(Data.Name +", " + Data.Age+  " is Found after " + count +  " occurences!");
+            }else{
+                System.out.println(Data.Name +", " + Data.Age +  " is NOT Found after " + count +  " occurences!");
+            }
+        }
     }
 
     public  void remove(contacts Data){
@@ -137,7 +137,7 @@ class LinkList{
                 current.next=current.next.next;
                 return;
             }
-                current = current.next;
+            current = current.next;
         }
     }
 
@@ -219,7 +219,7 @@ class LinkList{
 
 }
 
-public class linkList1_SimpleMethods {
+public class LinkedList_methods {
     public static void main(String[] args) {
         LinkList list = new LinkList();
 
