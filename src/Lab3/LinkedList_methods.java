@@ -221,7 +221,7 @@ class LinkList{
 
 public class LinkedList_methods {
     public static void main(String[] args) {
-        LinkList list = new LinkList();
+        LinkedList list = new LinkedList();
 
         list.addToFront(new contacts("Asma ", 19));
         list.addToFront(new contacts("Aisha ", 15));
