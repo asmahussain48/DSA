@@ -1,6 +1,6 @@
 package Lab3;
 
-import java.util.Objects;
+import javax.xml.crypto.Data;
 
 class LinkeList {
     Node head;
@@ -148,7 +148,7 @@ class LinkeList {
 
     public contacts get( int index ) {
         checkGetIndex(index);
-        Node current=head;
+        Node current = head;
         for (int i=0; i < index; i++) {
             current=current.next;
         }
@@ -156,41 +156,33 @@ class LinkeList {
     }
 
     public void insertAt( int index, contacts data ) {
-        checkInsertIndex(index);
-        if (index == 0) {
-            addToFront(data);
-            return;
+        Node current = head;
+        for (int i=0; i < (index - 1); i++) {
+            current =current.next;
         }
-        if (index == size) {
-            addToBack(data);
-            return;
-        }
-        Node prev=head;
-        for (int i=0; i < index - 1; i++) prev=prev.next;
         Node newNode=new Node(data);
-        newNode.next=prev.next;
-        prev.next=newNode;
+        newNode.next = current.next;
+        current.next = newNode;
         size++;
     }
 
+    public void insertAtEnd(contacts data){
+        Node current = head;
+        Node newNode = new Node(data);
+        while(current.next != null){
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+
     public contacts removeFrom( int index ) {
-        checkGetIndex(index);
-        if (index == 0) {
-            contacts removed=head.Data;
-            removeFrontItem();
-            return removed;
-        }
-        if (index == size - 1) {
-            contacts removed=tail.Data;
-            removeBackItem();
-            return removed;
-        }
-        Node prev=head;
+        Node current = head;
         for (int i=0; i < index - 1; i++){
-            prev=prev.next;
+            current =current.next;
         }
-        Node toRemove=prev.next;
-        prev.next=toRemove.next;
+        Node toRemove = current.next; // for return the removeValue
+        current.next= current.next.next;
         size--;
         return toRemove.Data;
     }
@@ -208,27 +200,25 @@ class LinkeList {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
     }
 
-    private void checkInsertIndex( int index ) {
-        if (index < 0 || index > size)
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-    }
-    // In class LinkedList
     public void reverse() {
-        if (head == null || head.next == null) return;
-
-        Node prev = null;
-        Node current = head;
-        Node nextNode;
-        tail = head;               // old head becomes new tail
-
-        while (current != null) {
-            nextNode = current.next;
-            current.next = prev;
-            prev = current;
-            current = nextNode;
+        if (size <= 1){
+            return;
         }
-        head = prev;               // prev is the new head
+        for (int i = 1; i < size; i++) {
+            Node current = head;
+            for (int j=0; j < i - 1; j++){
+                current =current.next;
+            }
+            Node toRemove = current.next; // for return the removeValue
+            current.next= current.next.next;
+            contacts x =  toRemove.Data;
+            Node newNode=new Node(x);
+            newNode.next=head;
+            head=newNode;
+            if (tail == null) tail=newNode;
+        }
     }
+
 
 }
 
@@ -246,15 +236,13 @@ public class LinkedList_IndexMedthods {
         System.out.println("get(0): " + list.get(0));
         System.out.println("get(2): " + list.get(2));
 
-        list.insertAt(2, new contacts("Fatima", 9));
-        System.out.println("After insertAt(2, Fatima):");
+         System.out.println("After insertAt(2, Fatima):");
         list.printAll();
 
         contacts removed=list.removeFrom(3);
         System.out.println("Removed at index 3: " + removed);
         list.printAll();
 
-        list.insertAt(list.getSize(), new contacts("Zara", 8));
         System.out.println("After insertAt(size, Zara):");
         list.printAll();
         list.reverse();    // or list.reverseInPlace();
