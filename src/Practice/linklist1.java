@@ -27,7 +27,11 @@ public class linklist1 {
         if(head == null){
             return -1;
         }
-
+        node current = head;
+        while(current.next != null){
+            current = current.next;
+        }
+        return current.Data;
     }
     public void removeFrontItem(){
         if(head == null){
@@ -74,6 +78,46 @@ public class linklist1 {
             System.out.println("Key find at " + count + " index ");
         }
     }
+    public int remove(int key) {
+        if ( head == null ) {
+            return - 1;
+        }
+        node current=head;
+        int toRemove = -1;
+        while (current.next != null) {
+            if ( current.next.Data == key ) {
+                toRemove = current.next.Data;
+                current.next =current.next.next;
+
+            }
+                current=current.next;
+        }
+        return toRemove;
+    }
+
+    public void addkeyBeforeNode(node newNode, int key){
+        if(head == null){
+            System.out.println("List is empty!" );
+        }
+        node current = head;
+        while(current != null){
+            if(current.next.Data == key){
+                node temp = current.next;
+                current.next = newNode;
+                newNode.next= temp;
+                break;
+            }else{
+                current = current.next;
+            }
+        }
+    }
+
+    public void addKeyAfterNode(node newNode, int key){
+        if(head == null){
+            System.out.println("List is empty!" );
+        }
+    }
+
 
 
     public void printAll(){
@@ -98,14 +142,22 @@ public class linklist1 {
         l1.addToFront( 8 );
 
         l1.printAll();
-        l1.removeFrontItem();
+//        l1.removeFrontItem();
+//        l1.printAll();
+//
+//        l1.addtoBack( 11 );
+//        l1.printAll();
+//        l1.removeBackItem();
+//        l1.printAll();
+//
+//        l1.find( 4 );
+//
+//        System.out.println("Front Item " +l1.getFrontItem() );
+//        System.out.println("Front Item " +l1.getBackItem() );
+//        System.out.println("Remove " + l1.remove( 6 ) );
         l1.printAll();
 
-        l1.addtoBack( 11 );
+        l1.addkeyBeforeNode( new node( 23 ), 5 );
         l1.printAll();
-        l1.removeBackItem();
-        l1.printAll();
-
-        l1.find( 4 );
     }
 }
