@@ -1,6 +1,4 @@
-package Lab2;
-
-import java.util.List;
+package Lab2_Array;
 
 public class Array_mergeSorted {
 

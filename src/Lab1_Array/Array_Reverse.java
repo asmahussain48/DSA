@@ -1,4 +1,4 @@
-package Lab1;
+package Lab1_Array;
 import java.util.Scanner;
 public class Array_Reverse {
 

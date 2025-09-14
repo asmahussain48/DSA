@@ -1,23 +1,52 @@
-package Lab4.intMethods;
+package Lab4.ClassMethods;
 
-class Node{
-    int Data;
-    Node next ;
-    Node prev;
-    Node(int Data){
+
+class userData {
+    String Name;
+    int Age;
+    String PhoneNumber;
+    String Address;
+
+    public userData( String name , int age , String phoneNumber , String address ) {
+        Name=name;
+        Age=age;
+        PhoneNumber=phoneNumber;
+        Address=address;
+    }
+
+    @Override
+    public String toString( ) {
+        return " " + Name + ", ";
+//                + " (" + Age + "), " + PhoneNumber + ", " + Address;
+    }
+
+    @Override
+    public boolean equals( Object o ) {
+        if ( this == o ) return true;
+        if ( ! (o instanceof userData) ) return false;
+        userData u=(userData) o;
+        return java.util.Objects.equals( PhoneNumber , u.PhoneNumber );
+
+
+    }
+}
+
+class node {
+    userData Data;
+    node next ;
+    node prev;
+    node( userData Data){
         this.Data = Data;
         this.next = null;
         this.prev = null;
     }
 }
-
-
-public class LinkList_methods_simpleInt {
-    Node head;
-    Node tail;
+public class LinkList_methods_class {
+    node head;
+    node tail;
     int size = 0;
-    public void addToFront(int Data){
-       Node newNode = new Node( Data );
+    public void addToFront(userData Data){
+       node newNode = new node( Data );
        newNode.prev = null;
        newNode.next = head;
        if(head != null){
@@ -29,9 +58,9 @@ public class LinkList_methods_simpleInt {
        head = newNode;
        size++;
     }
-    public int getFrontItem(){
+    public userData getFrontItem(){
         if (head == null){
-            return -1;
+            return null;
         }
         return head.Data;
     }
@@ -46,15 +75,15 @@ public class LinkList_methods_simpleInt {
             size--;
             return;
         }
-        Node current = head.next;
+        node current = head.next;
         head.next = null;
         head = current;
         head.prev = null;
         size--;
     }
 
-    public void addToBack(int Data){
-        Node newNode = new Node(Data);
+    public void addToBack(userData Data){
+        node newNode = new node(Data);
         if(head == null){
             head = newNode;
             return;
@@ -73,9 +102,9 @@ public class LinkList_methods_simpleInt {
         size++;
     }
 
-    public int getBackItem(){
+    public userData getBackItem(){
         if(head== null){
-            return -1;
+            return null;
         }
 //        Node current = head;
 //        while(current.next != null){
@@ -91,7 +120,7 @@ public class LinkList_methods_simpleInt {
             System.out.println("List is emptry!" );
             return;
         }
-        Node last = tail.prev;
+        node last = tail.prev;
         last.next = null;
         tail = last;
 
@@ -105,15 +134,15 @@ public class LinkList_methods_simpleInt {
 //        size--;
     }
 
-    public void find(int key){
+    public void find(userData key){
         if(head == null){
             System.out.println("List is empty!" );
             return;
         }
-        Node current = head;
+        node current = head;
         int index = 0;
        while(current != null){
-           if(current.Data == key){
+           if(java.util.Objects.equals( current.Data,  key )){
                System.out.println( "Key " + current.Data +" found at  "+ index + " index. ");
                index++;
                return;
@@ -122,15 +151,15 @@ public class LinkList_methods_simpleInt {
        }
 
     }
-    public int remove(int key) {
+    public userData remove(int key) {
         if (head == null) {
-            return -1;
+            return null;
         }
-        Node current = head;
-        while (current != null && current.Data != key){
+        node current = head;
+        while (current != null && java.util.Objects.equals( current.Data,  key )){
             current = current.next;
         }
-        int toRemove = current.Data;
+        userData toRemove = current.Data;
         if (current.prev != null) {
             current.prev.next = current.next;
         }
@@ -151,22 +180,22 @@ public class LinkList_methods_simpleInt {
         return false;
     }
 
-    public void addKeyBeforeNode(int Key, int Data){
-        Node newNode = new Node( Data );
+    public void addKeyBeforeNode(userData Key, userData Data){
+        node newNode = new node( Data );
         if(head == null){
             System.out.println("List is empty!" );
             return;
         }
-        if(head.Data == Key){
+        if(java.util.Objects.equals( head.Data,  Key )){
             newNode.next = head;
             head.prev = newNode;
             head = newNode;
             size++;
             return;
         }
-        Node current = head;
+        node current = head;
         while(current != null){
-            if(current.Data == Key){
+            if(java.util.Objects.equals( current.Data,  Key )){
                 newNode.prev = current.prev;
                 newNode.next = current;
                 current.prev.next= newNode;
@@ -178,15 +207,15 @@ public class LinkList_methods_simpleInt {
         }
 
     }
-    public void addKeyAfterNode(int key, int Data){
-        Node newNode = new Node( Data );
+    public void addKeyAfterNode(userData key, userData Data){
+        node newNode = new node( Data );
         if(head == null){
             System.out.println("List is empty!" );
             return;
         }
-        Node current = head;
+        node current = head;
         while(current != null){
-            if(current.Data == key){
+            if(java.util.Objects.equals( current.Data,  key )){
                 newNode.next = current.next;
                 current.next.prev = newNode;
                 newNode.prev = current;
@@ -202,7 +231,7 @@ public class LinkList_methods_simpleInt {
             System.out.println("List is empty!" );
             return;
         }
-        Node current = tail;
+        node current = tail;
         while(current != null){
             System.out.print(current.Data + " -> " );
             current = current.prev;
@@ -216,7 +245,7 @@ public class LinkList_methods_simpleInt {
             System.out.println("List is empty!" );
             return;
         }
-        Node current = head;
+        node current = head;
         while(current != null){
             System.out.print(current.Data + " -> " );
             current = current.next;
@@ -225,44 +254,45 @@ public class LinkList_methods_simpleInt {
     }
 
     public  void main( String[] args ) {
-        LinkList_methods_simpleInt l1 = new LinkList_methods_simpleInt();
+        LinkList_methods_class l1 = new LinkList_methods_class();
+        userData u1 = new userData("Asma", 21, "03333886321", "Sukkur");
+        userData u2 = new userData("Ali",  22, "03001234567", "Karachi");
+        userData u3 = new userData("Hira", 20, "03451239876", "Lahore");
+        userData u4 = new userData("Saad", 24, "03151234098", "Islamabad");
+        userData u5 = new userData("Zoya", 23, "03211230987", "Quetta");
 
-        l1.addToFront( 2 );
-        l1.addToFront( 4 );
-        l1.addToFront( 5 );
-        l1.addToFront( 6 );
-        l1.addToFront( 7 );
-        l1.addToFront( 8 );
-        l1.addToFront( 9 );
-        l1.addToFront( 10 );
-        l1.addToFront( 2);
-        l1.addToFront( 3 );
+        l1.addToFront( u1 );
+        l1.addToFront( u2 );
+        l1.addToFront( u3 );
+        l1.addToFront( u4 );
+        l1.addToFront( u5 );
+        l1.addToFront( u2 );
         l1.printAll();
         l1.removeFrontItem();
         System.out.println("After removing Front Item :  " );
         l1.printAll();
         System.out.println("After Adding Back Item :  " );
-        l1.addToBack( 1 );
+        userData u6  = new userData("Bilal", 25, "03045551234", "Faisalabad");
+        l1.addToBack( u6 );
         l1.printAll();
         System.out.println ("Get Back Item:  " + l1.getBackItem() );
         System.out.println("Remove Back Item" );
         l1.removeBackItem();
         l1.printAll();
-        System.out.println("FInd 4" );
-        l1.find(4);
+        System.out.println("FInd" );
+        l1.find(u4);
         System.out.println("Is List Empty (True or False) : "+ l1.isListEmpty() );
         System.out.println("Add key Before Node" );
-        l1.addKeyBeforeNode( 6, 1 );
+        userData u7  = new userData("Amna",  19, "03331234567", "Multan");
+        l1.addKeyBeforeNode( u5, u7 );
         l1.printAll();
         System.out.println("Add key After Node" );
-        l1.addKeyAfterNode( 10, 11 );
+        userData u8  = new userData("Hamza", 27, "03141239876", "Peshawar");
+        l1.addKeyAfterNode( u3, u8 );
         l1.printAll();
         System.out.println("After Reversing" );
         l1.printInReverseOrder();
 
-
-    }
-
-
-
+        
+    }   
 }

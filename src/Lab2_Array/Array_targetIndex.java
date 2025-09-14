@@ -1,4 +1,4 @@
-package Lab2;
+package Lab2_Array;
 
 public class Array_targetIndex {
     public static void main(String[] args) {

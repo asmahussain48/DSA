@@ -1,4 +1,4 @@
-package Lab3.ClassMethods;
+package Lab3_LinkList_singly.ClassMethods;
 
 class UserData {
     String Name;

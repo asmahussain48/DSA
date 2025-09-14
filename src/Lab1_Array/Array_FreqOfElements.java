@@ -1,4 +1,4 @@
-package Lab1;
+package Lab1_Array;
 
 public class Array_FreqOfElements {
     public static void main(String[] args) {
