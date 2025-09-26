@@ -1,4 +1,4 @@
-package Lab3_LinkList_singly.IntMethods;
+package Lab3.IntMethods;
 
 
 class Node {

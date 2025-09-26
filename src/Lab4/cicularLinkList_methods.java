@@ -94,10 +94,6 @@ public class cicularLinkList_methods {
         if (head == null){
             return -1;
         }
-//        if (hasCycle()) {
-//            System.out.println("List has a cycle. No middle node.");
-//            return -1;
-//        }
         node slow = head;
         node fast = head;
         do{
