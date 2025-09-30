@@ -20,12 +20,12 @@ class Queue {
             System.out.println("Queue is full! Cannot insert " + value);
             return;
         }
-        //Simle : -> rear++;  // Circular : -> rear = (rear + 1) % capacity;
         rear = (rear + 1) % capacity;
         arr[rear] = value;
         size++;
         System.out.println(value + " added to queue");
     }
+
 
     public int dequeue() {
         if (isEmpty()) {
@@ -34,10 +34,6 @@ class Queue {
         }
         int removed = arr[front];
         front = (front + 1) % capacity;
-// Simple       for (int i = 0; i < rear; i++) {
-//            arr[i] = arr[i + 1];
-//        }
-        // Simple -> rear--;
         size--;
         return removed;
     }
