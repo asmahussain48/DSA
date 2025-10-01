@@ -1,13 +1,13 @@
 package Lab5;
 
-class Queue {
+class Queue1 {
     private int[] arr;
     private int front;
     private int rear;
     private int size;
     private int capacity;
 
-    public Queue(int capacity) {
+    public Queue1(int capacity) {
         this.capacity = capacity;
         arr = new int[capacity];
         front = 0;
@@ -25,7 +25,6 @@ class Queue {
         size++;
         System.out.println(value + " added to queue");
     }
-
 
     public int dequeue() {
         if (isEmpty()) {
@@ -64,7 +63,7 @@ class Queue {
             return;
         }
         System.out.print("Queue elements: ");
-        for (int i = 0; i <= rear; i++) {
+        for (int i = 0; i < size; i++) {
             int index = (front + i) % capacity;
             System.out.print(arr[index] + " ");
         }
@@ -74,7 +73,7 @@ class Queue {
 
 public class Q1 {
     public static void main(String[] args) {
-        Queue q = new Queue(5);
+        Queue1 q = new Queue1(5);
 
         q.enqueue(10);
         q.enqueue(20);
