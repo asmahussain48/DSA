@@ -10,10 +10,10 @@ class Nod {
     }
 }
 
-class MyStack {
+class MyStackQ7 {
     private Nod top;
 
-    public MyStack() {
+    public MyStackQ7() {
         top = null;
     }
 
@@ -60,8 +60,8 @@ class MyStack {
 }
 
 public class Q7 {
-    public static void sortStack(MyStack stack) {
-        MyStack tempStack = new MyStack();
+    public static void sortStack( MyStackQ7 stack) {
+        MyStackQ7 tempStack = new MyStackQ7();
         while (!stack.isEmpty()) {
             int curr = stack.pop();
             while (!tempStack.isEmpty() && tempStack.peek() > curr) {
@@ -75,7 +75,7 @@ public class Q7 {
     }
 
     public static void main(String[] args) {
-        MyStack stack = new MyStack();
+        MyStackQ7 stack = new MyStackQ7();
         stack.push(34);
         stack.push(3);
         stack.push(31);

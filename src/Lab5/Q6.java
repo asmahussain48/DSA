@@ -9,10 +9,10 @@ class Node4 {
     }
 }
 
-class Stack4 {
+class StackQ6 {
     private Node4 top;
 
-    public Stack4() {
+    public StackQ6() {
         top = null;
     }
 
@@ -38,7 +38,7 @@ class Stack4 {
 
 public class Q6 {
     public static boolean isBalanced(String str) {
-        Stack4 stack = new Stack4();
+        StackQ6 stack = new StackQ6();
 
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);

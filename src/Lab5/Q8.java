@@ -10,11 +10,11 @@ class Nod1 {
     }
 }
 
-class MyStack_1 {
+class MyStackQ8 {
     private Nod1 top;
     private int size;
 
-    public MyStack_1() {
+    public MyStackQ8() {
         top = null;
         size = 0;
     }
@@ -51,12 +51,12 @@ class MyStack_1 {
 }
 
 class QueueUsingTwoStacks {
-    private MyStack_1 stack_1;
-    private MyStack_1 stack_2;
+    private MyStackQ8 stack_1;
+    private MyStackQ8 stack_2;
 
     public QueueUsingTwoStacks() {
-        stack_1 = new MyStack_1();
-        stack_2 = new MyStack_1();
+        stack_1 = new MyStackQ8();
+        stack_2 = new MyStackQ8();
     }
 
     public void enqueue(int value) {
@@ -104,7 +104,7 @@ class QueueUsingTwoStacks {
         }
 
         System.out.print("Queue elements (front -> rear): ");
-        MyStack_1 temp = new MyStack_1();
+        MyStackQ8 temp = new MyStackQ8();
         while (!stack_2.isEmpty()) {
             int v = stack_2.pop();
             System.out.print(v + " ");

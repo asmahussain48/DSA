@@ -1,11 +1,11 @@
 package Lab5;
 
-class Stack1 {
+class StackQ3 {
     private int[] arr;
     private int top;
     private int capacity;
 
-    public Stack1(int size) {
+    public StackQ3( int size) {
         arr = new int[size];
         capacity = size;
         top = -1;
@@ -62,7 +62,7 @@ class Stack1 {
 
 public class Q3 {
     public static void main(String[] args) {
-        Stack1 stack = new Stack1(5);
+        StackQ3 stack = new StackQ3(5);
 
         stack.push(10);
         stack.push(20);

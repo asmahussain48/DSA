@@ -10,11 +10,11 @@ class Node {
     }
 }
 
-class Queue2 {
+class QueueQ2 {
     private Node front, rear;
     private int size;
 
-    public Queue2() {
+    public QueueQ2() {
         front = rear = null;
         size = 0;
     }
@@ -77,7 +77,7 @@ class Queue2 {
 
 public class Q2 {
     public static void main(String[] args) {
-        Queue2 q = new Queue2();
+        QueueQ2 q = new QueueQ2();
 
         q.enqueue(10);
         q.enqueue(20);

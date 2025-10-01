@@ -1,13 +1,13 @@
 package Lab5;
 
-class Queue1 {
+class QueueQ1 {
     private int[] arr;
     private int front;
     private int rear;
     private int size;
     private int capacity;
 
-    public Queue1(int capacity) {
+    public QueueQ1( int capacity) {
         this.capacity = capacity;
         arr = new int[capacity];
         front = 0;
@@ -73,7 +73,7 @@ class Queue1 {
 
 public class Q1 {
     public static void main(String[] args) {
-        Queue1 q = new Queue1(5);
+        QueueQ1 q = new QueueQ1(5);
 
         q.enqueue(10);
         q.enqueue(20);

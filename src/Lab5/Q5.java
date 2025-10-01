@@ -10,10 +10,10 @@ class Node3 {
     }
 }
 
-class Stack3 {
+class StackQ5 {
     private Node3 top;
 
-    public Stack3() {
+    public StackQ5() {
         top = null;
     }
 
@@ -39,7 +39,7 @@ class Stack3 {
 
 public class Q5 {
     public static boolean isPalindrome(String str) {
-        Stack3 stack = new Stack3();
+        StackQ5 stack = new StackQ5();
         int length = str.length();
 
         for (int i = 0; i < length; i++) {

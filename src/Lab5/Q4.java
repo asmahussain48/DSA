@@ -10,11 +10,11 @@ class Node2 {
     }
 }
 
-class Stack2 {
+class StackQ4 {
     private Node2 top;
     private int size;
 
-    public Stack2() {
+    public StackQ4() {
         top = null;
         size = 0;
     }
@@ -71,7 +71,7 @@ class Stack2 {
 
 public class Q4 {
     public static void main(String[] args) {
-        Stack2 stack = new Stack2();
+        StackQ4 stack = new StackQ4();
 
         stack.push(10);
         stack.push(20);
