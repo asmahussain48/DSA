@@ -64,8 +64,7 @@ class QueueQ1 {
         }
         System.out.print("Queue elements: ");
         for (int i = 0; i < size; i++) {
-            int index = (front + i) % capacity;
-            System.out.print(arr[index] + " ");
+            System.out.print(arr[(front + i) % capacity] + " ");
         }
         System.out.println();
     }
