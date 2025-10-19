@@ -9,7 +9,9 @@ class MyStack {
         top = -1;
     }
 
-    public boolean isEmpty() { return top == -1; }
+    public boolean isEmpty() {
+        return top == -1;
+    }
 
     public void push(int x) {
         if (top == arr.length - 1) throw new RuntimeException("Overflow");
