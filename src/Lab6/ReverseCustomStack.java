@@ -4,65 +4,65 @@ class MyStack {
     private int[] arr;
     private int top;
 
-    MyStack(int size) {
-        arr = new int[size];
-        top = -1;
+    MyStack( int size ) {
+        arr=new int[size];
+        top=- 1;
     }
 
     public boolean isEmpty() {
-        return top == -1;
+        return top == - 1;
     }
 
-    public void push(int x) {
-        if (top == arr.length - 1) throw new RuntimeException("Overflow");
-        arr[++top] = x;
+    public void push( int x ) {
+        if ( top == arr.length - 1 ) throw new RuntimeException( "Overflow" );
+        arr[++ top]=x;
     }
 
     public int pop() {
-        if (isEmpty()) throw new RuntimeException("Underflow");
+        if ( isEmpty( ) ) throw new RuntimeException( "Underflow" );
         return arr[top--];
     }
 
     public void print() {
-        for (int i = 0; i <= top; i++) System.out.print(arr[i] + " ");
-        System.out.println();
+        for ( int i=0 ; i <= top ; i++ ) System.out.print( arr[i] + " " );
+        System.out.println( );
     }
 
-    private void insertAtBottom(int x) {
-        if (isEmpty()) {
-            push(x);
+    private void insertAtBottom( int x ) {
+        if ( isEmpty( ) ) {
+            push( x );
             return;
         }
-        int t = pop();
-        insertAtBottom(x);
-        push(t);
+        int t=pop( );
+        insertAtBottom( x );
+        push( t );
     }
 
     public void reverse() {
-        if (isEmpty()) return;
-        int t = pop();
-        reverse();
-        insertAtBottom(t);
+        if ( isEmpty( ) ) return;
+        int t=pop( );
+        reverse( );
+        insertAtBottom( t );
     }
 }
 
 public class ReverseCustomStack {
-    public static void main(String[] args) {
-        MyStack st = new MyStack(10);
+    public static void main( String[] args ) {
+        MyStack st=new MyStack( 10 );
 
-        st.push(1);
-        st.push(2);
-        st.push(3);
-        st.push(4);
-        st.push(5);
+        st.push( 1 );
+        st.push( 2 );
+        st.push( 3 );
+        st.push( 4 );
+        st.push( 5 );
 
-        System.out.print("Original: ");
-        st.print();
+        System.out.print( "Original: " );
+        st.print( );
 
-        st.reverse();
+        st.reverse( );
 
-        System.out.print("Reversed: ");
-        st.print();
+        System.out.print( "Reversed: " );
+        st.print( );
     }
 }
 

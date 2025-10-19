@@ -238,27 +238,27 @@ public class LinkList_methods_simpleInt {
         l1.addToFront( 2);
         l1.addToFront( 3 );
         l1.printAll();
-        l1.removeFrontItem();
-        System.out.println("After removing Front Item :  " );
-        l1.printAll();
-        System.out.println("After Adding Back Item :  " );
-        l1.addToBack( 1 );
-        l1.printAll();
-        System.out.println ("Get Back Item:  " + l1.getBackItem() );
-        System.out.println("Remove Back Item" );
-        l1.removeBackItem();
-        l1.printAll();
-        System.out.println("FInd 4" );
-        l1.find(4);
-        System.out.println("Is List Empty (True or False) : "+ l1.isListEmpty() );
-        System.out.println("Add key Before Node" );
-        l1.addKeyBeforeNode( 6, 1 );
-        l1.printAll();
-        System.out.println("Add key After Node" );
-        l1.addKeyAfterNode( 10, 11 );
-        l1.printAll();
-        System.out.println("After Reversing" );
-        l1.printInReverseOrder();
+//        l1.removeFrontItem();
+//        System.out.println("After removing Front Item :  " );
+//        l1.printAll();
+//        System.out.println("After Adding Back Item :  " );
+//        l1.addToBack( 1 );
+//        l1.printAll();
+//        System.out.println ("Get Back Item:  " + l1.getBackItem() );
+//        System.out.println("Remove Back Item" );
+//        l1.removeBackItem();
+//        l1.printAll();
+//        System.out.println("FInd 4" );
+//        l1.find(4);
+//        System.out.println("Is List Empty (True or False) : "+ l1.isListEmpty() );
+//        System.out.println("Add key Before Node" );
+//        l1.addKeyBeforeNode( 6, 1 );
+//        l1.printAll();
+//        System.out.println("Add key After Node" );
+//        l1.addKeyAfterNode( 10, 11 );
+//        l1.printAll();
+//        System.out.println("After Reversing" );
+//        l1.printInReverseOrder();
 
 
     }
