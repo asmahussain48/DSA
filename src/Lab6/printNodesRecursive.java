@@ -23,7 +23,7 @@ public class printNodesRecursive {
         recursivePrint(head);
     }
 
-    // Recursive method to print nodes
+    // Recursive method
     public static void recursivePrint(Node head) {
         if (head == null)  // base case
             return;
