@@ -94,14 +94,18 @@ public class cicularLinkList_methods {
         if (head == null){
             return -1;
         }
+
         node slow = head;
         node fast = head;
-        do{
+
+        while(fast.next != head && fast.next.next != head){
             slow = slow.next;
             fast = fast.next.next;
-        }while(slow != head && fast != head);
+        }
+
         return slow.Data;
     }
+
 
     public void displayList(){
         if(head == null){

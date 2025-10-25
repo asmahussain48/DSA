@@ -115,12 +115,12 @@ public class LinkList_methods_simpleInt {
        while(current != null){
            if(current.Data == key){
                System.out.println( "Key " + current.Data +" found at  "+ index + " index. ");
-               index++;
                return;
            }
            current = current.next;
+           index++;
        }
-
+        System.out.println("Key " + key + " not found in the list.");
     }
     public int remove(int key) {
         if (head == null) {
