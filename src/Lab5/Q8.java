@@ -100,7 +100,8 @@ class QueueUsingTwoStacks {
             return;
         }
         if (stack_2.isEmpty()) {
-            while (!stack_1.isEmpty()) stack_2.push(stack_1.pop());
+            while (!stack_1.isEmpty())
+                stack_2.push(stack_1.pop());
         }
 
         System.out.print("Queue elements (front -> rear): ");

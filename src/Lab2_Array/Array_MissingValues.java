@@ -1,26 +1,40 @@
 package Lab2_Array;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Array_MissingValues {
     public static void main(String[] args) {
-        int Array1[]={1, 1};
-        int Array2[] = {2,3,4,1,6,7,1,8,3,6};
-        System.out.println(MissingValue(Array1));
-        System.out.println(MissingValue(Array2));
+        int arr1[] = {1, 1};
+        int arr2[] = {2, 3, 4, 1, 6, 7, 1, 8, 3, 6};
+
+        System.out.println("Missing values in Array1:");
+        findMissing(arr1);
+
+        System.out.println("\nMissing values in Array2:");
+        findMissing(arr2);
     }
-    public static List<Integer> MissingValue(int[] Array){
-            ArrayList<Integer> missingValues = new ArrayList<>();
-            int n = Array.length;
-            boolean vistied [] = new boolean[n+1];
-            for(int i =0; i<n; i++){
-                vistied[Array[i]] = true;
+
+    public static void findMissing(int arr[]) {
+        int n = arr.length;
+        boolean visited[] = new boolean[n + 1]; // track numbers from 1 to n
+
+        // Mark existing numbers as visited
+        for (int i = 0; i < n; i++) {
+            int value = arr[i];
+            if (value >= 1 && value <= n) {
+                visited[value] = true;
             }
-            for(int i =1; i<= n; i++){
-                if(!vistied[i]){
-                    missingValues.add(i);
-                }
+        }
+
+        // Print missing numbers
+        boolean anyMissing = false;
+        for (int i = 1; i <= n; i++) {
+            if (!visited[i]) {
+                System.out.print(i + " ");
+                anyMissing = true;
             }
-          return missingValues;
+        }
+
+        if (!anyMissing) {
+            System.out.print("No missing values");
+        }
     }
 }

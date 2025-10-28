@@ -1,7 +1,24 @@
 package Lab2_Array;
 
 import java.util.Scanner;
+class BinaryToInteger {
+    public static void main(String[] args) {
+        // Example binary array (8 bits)
+        int[] binary = {1, 0, 1, 1, 0, 0, 1, 1};
 
+        int num = 0;
+        int power = 128; // start with 2^7 = 128 for 8-bit binary
+
+        for (int i = 0; i < 8; i++) {
+            if (binary[i] == 1) {
+                num += power;
+            }
+            power = power / 2; // move to next lower bit
+        }
+
+        System.out.println("Decimal: " + num);
+    }
+}
 public class Arrays_BinaryToIneger {
     public static void main(String[] args) {
         System.out.print("Enter a non-negatve Integer");
@@ -16,14 +33,16 @@ public class Arrays_BinaryToIneger {
         }
 
         for(int i = 0; i<8 ; i++){
-            if(num >= power){
-                binary[i] = 1;
-                num -= power;
+            if(num<=0){
+                break;
             }
-            else {
-                binary[i] = 0;
-            }
-            power = power/2; //128 to 64 , 64 to 32 and so on
+                if ( num >= power ) {
+                    binary[i]=1;
+                    num-=power;
+                } else {
+                    binary[i]=0;
+                }
+                power=power / 2; //128 to 64 , 64 to 32 and so on
 
 
         }

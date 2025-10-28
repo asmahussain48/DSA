@@ -14,7 +14,6 @@ public class Array_mergeSorted {
             System.out.print("]");
         }
 
-
         public static int[] mergeArrays(int[] arr1, int[] arr2) {
             int n1 = arr1.length;
             int n2 = arr2.length;
@@ -24,12 +23,15 @@ public class Array_mergeSorted {
             for (int num : arr1) {
                 int j = size - 1;
                 while (j >= 0 && merged[j] > num) {
-                    merged[j + 1] = merged[j];
-                    j--;
-                }
+                    merged[j + 1] = merged[j]; //shifts the element at position j one step to the right.
+                    j--;  //moves left to check the next element (the one before the one we just moved).
+                }/*
+                    This loop continues shifting larger elements to the right until it finds the right position for num.
+                 */
                 merged[j + 1] = num;
                 size++;
             }
+
 
             for (int num : arr2) {
                 int j = size - 1;
