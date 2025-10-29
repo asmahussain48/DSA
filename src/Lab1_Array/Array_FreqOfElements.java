@@ -15,6 +15,7 @@ public class Array_FreqOfElements {
             if (visited[i]) {
                 continue;
             }
+
             int count = 0;
             for (int j = 0; j < arr.length; j++) {
                 if (arr[i] == arr[j]) {

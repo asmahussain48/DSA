@@ -26,7 +26,7 @@ public class Array_mergeSorted {
                     merged[j + 1] = merged[j]; //shifts the element at position j one step to the right.
                     j--;  //moves left to check the next element (the one before the one we just moved).
                 }/*
-                    This loop continues shifting larger elements to the right until it finds the right position for num.
+             This loop continues shifting larger elements to the right until it finds the right position for num.
                  */
                 merged[j + 1] = num;
                 size++;

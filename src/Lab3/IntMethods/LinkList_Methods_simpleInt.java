@@ -213,6 +213,7 @@ public class LinkList_Methods_simpleInt {
         }
         if(index == 0){
             addToFront( Data );
+
             return;
         }
         if(index == size){

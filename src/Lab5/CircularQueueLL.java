@@ -47,7 +47,7 @@ public class CircularQueueLL {
         if (isEmpty()) {
             front = newNode;
             rear = newNode;
-            newNode.next = front;  // circular link
+            newNode.next = front;
         } else {
             rear.next = newNode;
             rear = newNode;

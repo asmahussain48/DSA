@@ -16,7 +16,7 @@ public class Array_MissingValues {
         int n = arr.length;
         boolean visited[] = new boolean[n + 1]; // track numbers from 1 to n
 
-        // Mark existing numbers as visited
+        // Mark existing numbers as visited True
         for (int i = 0; i < n; i++) {
             int value = arr[i];
             if (value >= 1 && value <= n) {
@@ -24,7 +24,7 @@ public class Array_MissingValues {
             }
         }
 
-        // Print missing numbers
+        // Print missing numbers false ones
         boolean anyMissing = false;
         for (int i = 1; i <= n; i++) {
             if (!visited[i]) {
