@@ -15,6 +15,7 @@ class BinarySearchRecursive {
     public static void main(String[] args) {
         int[] arr = {2, 4, 6, 8, 10, 12, 14, 16};
 
+//        int key = 10;
         int key = 10;
         int result = binarySearch(arr, 0, arr.length - 1, key);
 
