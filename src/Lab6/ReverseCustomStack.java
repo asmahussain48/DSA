@@ -39,7 +39,8 @@ class MyStack {
     }
 
     public void reverse() {
-        if ( isEmpty( ) ) return;
+        if ( isEmpty( ) )
+            return;
         int t=pop( );
         reverse( );
         insertAtBottom( t );

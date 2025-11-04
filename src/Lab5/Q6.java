@@ -57,7 +57,6 @@ public class Q6 {
                 }
             }
         }
-
         return stack.isEmpty();
     }
 
