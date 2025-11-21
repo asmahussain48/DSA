@@ -265,13 +265,13 @@ public class CarsWorldApp {
             System.out.println("1. Search Car By Brand");
             System.out.println("2. Search Car By Model");
             System.out.println("3. View All Cars");
-            System.out.println("4. Cost Calculator");
-            System.out.println("5. Give Feedback");
-            System.out.println("6. Exit to Main Menu");
-            System.out.println("7. View All Cars Sorted By Price (BST)");
-            System.out.println("8. Search Cars By Price Range (BST)");
-            System.out.println("9. Show Top 3 Cheapest Cars (Heap)");
-            System.out.println("10. Show Top 3 Most Expensive Cars (Heap)");
+            System.out.println("4. View All Cars Sorted By Price");
+            System.out.println("5. Search Cars By Price Range");
+            System.out.println("6. Show Top 3 Cheapest Cars");
+            System.out.println("7. Show Top 3 Most Expensive Cars");
+            System.out.println("8. Cost Calculator");
+            System.out.println("9. Give Feedback");
+            System.out.println("10. Exit to Main Menu");
             System.out.print("Enter choice: ");
             choice = readInt();
 
@@ -286,30 +286,30 @@ public class CarsWorldApp {
                     printCars(inventory.getAllCars());
                     break;
                 case 4:
-                    costCalculator();
-                    break;
-                case 5:
-                    giveFeedback();
-                    break;
-                case 6:
-                    System.out.println("Leaving user dashboard.");
-                    break;
-                case 7:
                     viewCarsSortedByPrice();
                     break;
-                case 8:
+                case 5:
                     searchCarsByPriceRange();
                     break;
-                case 9:
+                case 6:
                     showTopKCheapestCars(3);
                     break;
-                case 10:
+                case 7:
                     showTopKMostExpensiveCars(3);
+                    break;
+                case 8:
+                    costCalculator();
+                    break;
+                case 9:
+                    giveFeedback();
+                    break;
+                case 10:
+                    System.out.println("Leaving user dashboard.");
                     break;
                 default:
                     System.out.println("Invalid choice.");
             }
-        } while (choice != 6);
+        } while (choice != 10);
     }
 
     private void searchCarByBrand() {
