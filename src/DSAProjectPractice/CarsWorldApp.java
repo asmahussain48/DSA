@@ -66,6 +66,7 @@ public class CarsWorldApp {
         } while (choice != 3);
     }
 
+    
     private int readInt() {
         while (!scanner.hasNextInt()) {
             System.out.print("Please enter a valid number: ");
