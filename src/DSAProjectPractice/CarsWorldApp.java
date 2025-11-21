@@ -66,7 +66,6 @@ public class CarsWorldApp {
         } while (choice != 3);
     }
 
-    
     private int readInt() {
         while (!scanner.hasNextInt()) {
             System.out.print("Please enter a valid number: ");
@@ -205,9 +204,13 @@ public class CarsWorldApp {
         System.out.println("\n--- Delete Car ---");
         System.out.print("Enter Car Model to delete: ");
         String model = scanner.nextLine();
-        Car removed = inventory.deleteByModel(model);
+
+        System.out.print("Enter Car Year of the car to delete: ");
+        int year = readInt();
+
+        Car removed = inventory.deleteByModelAndYear(model, year);
         if (removed == null) {
-            System.out.println("No car found with that model.");
+            System.out.println("No car found with that model and year.");
         } else {
             undoStack.push(new AdminAction(AdminActionType.DELETE, new Car(removed), 0));
             System.out.println("Car deleted successfully.");
@@ -265,14 +268,15 @@ public class CarsWorldApp {
             System.out.println("\n===== USER DASHBOARD =====");
             System.out.println("1. Search Car By Brand");
             System.out.println("2. Search Car By Model");
-            System.out.println("3. View All Cars");
-            System.out.println("4. View All Cars Sorted By Price");
-            System.out.println("5. Search Cars By Price Range");
-            System.out.println("6. Show Top 3 Cheapest Cars");
-            System.out.println("7. Show Top 3 Most Expensive Cars");
-            System.out.println("8. Cost Calculator");
-            System.out.println("9. Give Feedback");
-            System.out.println("10. Exit to Main Menu");
+            System.out.println("3. Search Car By Year");          // ✅ NEW
+            System.out.println("4. View All Cars");
+            System.out.println("5. View All Cars Sorted By Price");
+            System.out.println("6. Search Cars By Price Range");
+            System.out.println("7. Show Top 3 Cheapest Cars");
+            System.out.println("8. Show Top 3 Most Expensive Cars");
+            System.out.println("9. Cost Calculator");
+            System.out.println("10. Give Feedback");
+            System.out.println("11. Exit to Main Menu");
             System.out.print("Enter choice: ");
             choice = readInt();
 
@@ -284,33 +288,36 @@ public class CarsWorldApp {
                     searchCarByModel();
                     break;
                 case 3:
-                    printCars(inventory.getAllCars());
+                    searchCarByYear();        // ✅ NEW
                     break;
                 case 4:
-                    viewCarsSortedByPrice();
+                    printCars(inventory.getAllCars());
                     break;
                 case 5:
-                    searchCarsByPriceRange();
+                    viewCarsSortedByPrice();
                     break;
                 case 6:
-                    showTopKCheapestCars(3);
+                    searchCarsByPriceRange();
                     break;
                 case 7:
-                    showTopKMostExpensiveCars(3);
+                    showTopKCheapestCars(3);
                     break;
                 case 8:
-                    costCalculator();
+                    showTopKMostExpensiveCars(3);
                     break;
                 case 9:
-                    giveFeedback();
+                    costCalculator();
                     break;
                 case 10:
+                    giveFeedback();
+                    break;
+                case 11:
                     System.out.println("Leaving user dashboard.");
                     break;
                 default:
                     System.out.println("Invalid choice.");
             }
-        } while (choice != 10);
+        } while (choice != 11);
     }
 
     private void searchCarByBrand() {
@@ -330,6 +337,27 @@ public class CarsWorldApp {
         ArrayList<Car> result = inventory.findByModel(model);
         if (result.isEmpty()) {
             System.out.println("No cars found for this model.");
+        } else {
+            printCars(result);
+        }
+    }
+
+    // ✅ NEW: Search Car By Year
+    private void searchCarByYear() {
+        System.out.print("Enter Car Year: ");
+        int year = readInt();
+
+        ArrayList<Car> all = inventory.getAllCars();
+        ArrayList<Car> result = new ArrayList<>();
+
+        for (Car c : all) {
+            if (c.getYear() == year) {
+                result.add(c);
+            }
+        }
+
+        if (result.isEmpty()) {
+            System.out.println("No cars found for this year.");
         } else {
             printCars(result);
         }

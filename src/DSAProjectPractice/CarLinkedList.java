@@ -22,6 +22,7 @@ public class CarLinkedList {
     }
 
     // Delete car by model. Returns the deleted car or null if not found.
+    // (still here in case other code uses it)
     public Car deleteByModel(String model) {
         if (head == null) return null;
 
@@ -45,6 +46,34 @@ public class CarLinkedList {
         Car removed = current.next.data;
         current.next = current.next.next;
         return removed;
+    }
+
+    // ✅ NEW: Delete car by model AND year
+    // Returns the deleted car or null if not found.
+    public Car deleteByModelAndYear(String model, int year) {
+        if (head == null) return null;
+
+        // Check first node
+        if (head.data.getModel().equalsIgnoreCase(model)
+                && head.data.getYear() == year) {
+            Car removed = head.data;
+            head = head.next;
+            return removed;
+        }
+
+        CarNode current = head;
+        while (current.next != null) {
+            Car nextCar = current.next.data;
+            if (nextCar.getModel().equalsIgnoreCase(model)
+                    && nextCar.getYear() == year) {
+                Car removed = nextCar;
+                current.next = current.next.next;
+                return removed;
+            }
+            current = current.next;
+        }
+
+        return null; // no car with that model+year
     }
 
     // Update price for a car by its model.
@@ -110,4 +139,3 @@ public class CarLinkedList {
         return head == null;
     }
 }
-
