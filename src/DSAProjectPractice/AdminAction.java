@@ -1,6 +1,6 @@
 package DSAProjectPractice;
 
-// AdminAction.java - stores information about a single admin operation
+//  stores information about a single admin operation
 // so we can UNDO it using a Stack.
 public class AdminAction {
     private AdminActionType type;

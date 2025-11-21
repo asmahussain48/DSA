@@ -2,8 +2,7 @@ package DSAProjectPractice;
 
 import java.util.ArrayList;
 
-// CarLinkedList.java - custom singly linked list implementation to store all cars.
-// This demonstrates the Linked List DSA.
+// custom singly linked list implementation to store all cars.
 public class CarLinkedList {
     private CarNode head; // first node of list
 
@@ -21,8 +20,6 @@ public class CarLinkedList {
         current.next = newNode;
     }
 
-    // Delete car by model. Returns the deleted car or null if not found.
-    // (still here in case other code uses it)
     public Car deleteByModel(String model) {
         if (head == null) return null;
 
@@ -48,8 +45,7 @@ public class CarLinkedList {
         return removed;
     }
 
-    // ✅ NEW: Delete car by model AND year
-    // Returns the deleted car or null if not found.
+
     public Car deleteByModelAndYear(String model, int year) {
         if (head == null) return null;
 

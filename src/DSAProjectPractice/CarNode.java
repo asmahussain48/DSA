@@ -1,6 +1,5 @@
 package DSAProjectPractice;
 
-// CarNode.java - node of a singly linked list that stores cars
 public class CarNode {
     Car data;
     CarNode next;

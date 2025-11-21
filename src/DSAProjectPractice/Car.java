@@ -1,6 +1,5 @@
 package DSAProjectPractice;
 
-// Car.java - represents a single car in the inventory
 public class Car {
     private String brand;
     private String model;

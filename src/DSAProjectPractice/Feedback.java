@@ -1,6 +1,5 @@
 package DSAProjectPractice;
 
-// Feedback.java - represents feedback text sent by a user
 public class Feedback {
     private String message;
 
