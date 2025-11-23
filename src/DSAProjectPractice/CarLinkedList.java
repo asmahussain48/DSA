@@ -119,6 +119,19 @@ public class CarLinkedList {
         }
         return null;
     }
+    public Car findByBrandModelYear(String brand, String model, int year) {
+        CarNode current = head;
+        while (current != null) {
+            Car car = current.data;
+            if (car.getBrand().equalsIgnoreCase(brand) &&
+                    car.getModel().equalsIgnoreCase(model) &&
+                    car.getYear() == year) {
+                return car;
+            }
+            current = current.next;
+        }
+        return null;
+    }
 
     // Get all cars as an ArrayList (for printing, searching etc.)
     public ArrayList<Car> getAllCars() {
