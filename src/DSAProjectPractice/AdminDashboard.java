@@ -97,6 +97,9 @@ public class AdminDashboard {
             return;
         }
 
+        Printer.printHeader();
+        Printer.printCar(car);
+
         System.out.print("Enter new price: ");
         long newPrice = app.input.readLong();
         if (newPrice == -1) return;

@@ -32,28 +32,28 @@ public class UserDashboard {
 
             switch (choice) {
                 case 1:
-                    searchByBrand();
+                    searchCarByBrand();
                     break;
                 case 2:
-                    searchByModel();
+                    searchCarByModel();
                     break;
                 case 3:
-                    searchByYear();
+                    searchCarByYear();
                     break;
                 case 4:
                     Printer.printCars(app.inventory.getAllCars());
                     break;
                 case 5:
-                    viewSortedByPrice();
+                    viewCarsSortedByPrice();
                     break;
                 case 6:
-                    searchByPriceRange();
+                    searchCarsByPriceRange();
                     break;
                 case 7:
-                    showCheapest();
+                    showTopKCheapestCars(3);
                     break;
                 case 8:
-                    showExpensive();
+                    showTopKMostExpensiveCars(3);
                     break;
                 case 9:
                     costCalculator();
@@ -71,19 +71,19 @@ public class UserDashboard {
         } while (choice != 11);
     }
 
-    private void searchByBrand() {
+    private void searchCarByBrand() {
         System.out.print("Enter Car Brand: ");
         String brand = app.scanner.nextLine();
         Printer.printCars(app.inventory.findByBrand(brand));
     }
 
-    private void searchByModel() {
+    private void searchCarByModel() {
         System.out.print("Enter Car Model: ");
         String model = app.scanner.nextLine();
         Printer.printCars(app.inventory.findByModel(model));
     }
 
-    private void searchByYear() {
+    private void searchCarByYear() {
         System.out.print("Enter Car Year: ");
         int year = app.input.readInt();
 
@@ -96,13 +96,13 @@ public class UserDashboard {
         Printer.printCars(result);
     }
 
-    private void viewSortedByPrice() {
+    private void viewCarsSortedByPrice() {
         ArrayList<Car> list = new ArrayList<>();
         app.priceTree.inOrder(list);
         Printer.printCars(list);
     }
 
-    private void searchByPriceRange() {
+    private void searchCarsByPriceRange() {
         System.out.print("Enter minimum price: ");
         long min = app.input.readLong();
 
@@ -114,9 +114,14 @@ public class UserDashboard {
         Printer.printCars(result);
     }
 
-    private void showCheapest() {
+    private void showTopKCheapestCars(int k) {
+        if (app.inventory.isEmpty()) {
+            System.out.println("Inventory is empty.");
+            return;
+        }
+
         Printer.printHeader();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < k; i++) {
             Car c = app.minHeap.extractMin();
             if (c != null) {
                 Printer.printCar(c);
@@ -125,9 +130,14 @@ public class UserDashboard {
         app.rebuildIndexes();
     }
 
-    private void showExpensive() {
+    private void showTopKMostExpensiveCars(int k) {
+        if (app.inventory.isEmpty()) {
+            System.out.println("Inventory is empty.");
+            return;
+        }
+
         Printer.printHeader();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < k; i++) {
             Car c = app.maxHeap.extractMax();
             if (c != null) {
                 Printer.printCar(c);
@@ -148,7 +158,7 @@ public class UserDashboard {
 
         Car car = app.inventory.findByBrandModelYear(brand, model, year);
         if (car == null) {
-            System.out.println("Car not found.");
+            System.out.println("Car not found with the given details.");
             return;
         }
 
@@ -158,15 +168,15 @@ public class UserDashboard {
         long total = car.getPrice() * qty;
         double tax = total * 0.05;
 
-        System.out.println("Base Total = " + total);
+        System.out.println("Base total = " + total);
         System.out.println("Tax (5%) = " + tax);
         System.out.println("Grand Total = " + (total + tax));
     }
 
     private void giveFeedback() {
-        System.out.print("Enter your feedback: ");
+        System.out.print("Enter your feedback about CarsWorld: ");
         String msg = app.scanner.nextLine();
         app.feedbackQueue.enqueue(new Feedback(msg));
-        System.out.println("Thank you for your feedback.");
+        System.out.println("Thank you! Your feedback has been recorded.");
     }
 }
