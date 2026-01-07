@@ -21,7 +21,6 @@ public class FeedbackQueue {
         return size == data.length;
     }
 
-    // Add feedback at the rear of the queue
     public void enqueue( Feedback f ) {
         if ( isFull( ) ) {
             System.out.println( "Feedback queue is full. Cannot accept more feedback now." );
@@ -32,7 +31,6 @@ public class FeedbackQueue {
         size++;
     }
 
-    // Remove feedback from the front of the queue
     public Feedback dequeue() {
         if ( isEmpty( ) ) {
             return null;

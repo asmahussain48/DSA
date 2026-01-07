@@ -15,7 +15,6 @@ public class Car {
         this.price=price;
     }
 
-    // Copy constructor (used by undo stack so we don't lose old values)
     public Car( Car other ) {
         this( other.brand , other.model , other.category , other.year , other.price );
     }
@@ -39,14 +38,12 @@ public class Car {
     public long getPrice() {
         return price;
     }
-
     public void setPrice( long price ) {
         this.price=price;
     }
 
     @Override
     public String toString() {
-        // formatted table row for printing
         return String.format( "%-10s %-18s %-10s %-6d %-10d" ,
                 brand , model , category , year , price );
     }

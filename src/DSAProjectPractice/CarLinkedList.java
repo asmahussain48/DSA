@@ -2,11 +2,10 @@ package DSAProjectPractice;
 
 import java.util.ArrayList;
 
-// custom singly linked list implementation to store all cars.
 public class CarLinkedList {
-    private CarNode head; // first node of list
 
-    // Add a car at the end of the list
+    private CarNode head;
+
     public void add(Car car) {
         CarNode newNode = new CarNode(car);
         if (head == null) {
@@ -23,7 +22,6 @@ public class CarLinkedList {
     public Car deleteByModel(String model) {
         if (head == null) return null;
 
-        // If first node matches
         if (head.data.getModel().equalsIgnoreCase(model)) {
             Car removed = head.data;
             head = head.next;
@@ -37,7 +35,7 @@ public class CarLinkedList {
         }
 
         if (current.next == null) {
-            return null; // not found
+            return null;
         }
 
         Car removed = current.next.data;
@@ -45,11 +43,9 @@ public class CarLinkedList {
         return removed;
     }
 
-
     public Car deleteByModelAndYear(String model, int year) {
         if (head == null) return null;
 
-        // Check first node
         if (head.data.getModel().equalsIgnoreCase(model)
                 && head.data.getYear() == year) {
             Car removed = head.data;
@@ -69,11 +65,9 @@ public class CarLinkedList {
             current = current.next;
         }
 
-        return null; // no car with that model+year
+        return null;
     }
 
-    // Update price for a car by its model.
-    // Returns previous price or -1 if not found.
     public long updatePriceByModel(String model, long newPrice) {
         Car car = findFirstByModel(model);
         if (car == null) return -1;
@@ -82,9 +76,8 @@ public class CarLinkedList {
         return oldPrice;
     }
 
-    // Find all cars with given brand (returns ArrayList as result)
     public ArrayList<Car> findByBrand(String brand) {
-        ArrayList<Car> result = new ArrayList<>(); // This uses ArrayList DSA
+        ArrayList<Car> result = new ArrayList<>();
         CarNode current = head;
         while (current != null) {
             if (current.data.getBrand().equalsIgnoreCase(brand)) {
@@ -95,7 +88,6 @@ public class CarLinkedList {
         return result;
     }
 
-    // Find all cars with given model
     public ArrayList<Car> findByModel(String model) {
         ArrayList<Car> result = new ArrayList<>();
         CarNode current = head;
@@ -108,7 +100,6 @@ public class CarLinkedList {
         return result;
     }
 
-    // Find first car with model (for internal use)
     public Car findFirstByModel(String model) {
         CarNode current = head;
         while (current != null) {
@@ -119,13 +110,14 @@ public class CarLinkedList {
         }
         return null;
     }
+
     public Car findByBrandModelYear(String brand, String model, int year) {
         CarNode current = head;
         while (current != null) {
             Car car = current.data;
-            if (car.getBrand().equalsIgnoreCase(brand) &&
-                    car.getModel().equalsIgnoreCase(model) &&
-                    car.getYear() == year) {
+            if (car.getBrand().equalsIgnoreCase(brand)
+                    && car.getModel().equalsIgnoreCase(model)
+                    && car.getYear() == year) {
                 return car;
             }
             current = current.next;
@@ -133,7 +125,6 @@ public class CarLinkedList {
         return null;
     }
 
-    // Get all cars as an ArrayList (for printing, searching etc.)
     public ArrayList<Car> getAllCars() {
         ArrayList<Car> result = new ArrayList<>();
         CarNode current = head;
